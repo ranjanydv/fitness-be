@@ -1,4 +1,4 @@
-import {
+const {
     pgTable,
     primaryKey,
     text,
@@ -6,9 +6,9 @@ import {
     uniqueIndex,
     uuid,
     varchar,
-} from "drizzle-orm/pg-core";
+} = require("drizzle-orm/pg-core");
 
-export const user = pgTable("user", {
+const user = pgTable("user", {
     id: uuid("id").primaryKey().defaultRandom(),
     name: varchar("name", { length: 256 }).notNull(),
     email: varchar("email", { length: 256 }).notNull().unique(),
@@ -17,7 +17,7 @@ export const user = pgTable("user", {
     updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
 
-export const product = pgTable("product", {
+const product = pgTable("product", {
     id: uuid("id").primaryKey().defaultRandom(),
     name: varchar("name", { length: 256 }).notNull(),
     description: text("description").notNull(),
@@ -25,3 +25,5 @@ export const product = pgTable("product", {
     createdAt: timestamp("created_at").defaultNow().notNull(),
     updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
+
+module.exports = { user, product };

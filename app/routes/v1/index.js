@@ -8,7 +8,7 @@ app.get("/", (req, res) => {
 });
 
 // auth routes
-// app.use("/auth", require("./auth.routes"));
+app.use("/auth", require("./auth.routes"));
 
 // user routes
 // app.use("/users", require("./user.routes"));
