@@ -1,29 +1,80 @@
 const {
-    pgTable,
-    primaryKey,
-    text,
-    timestamp,
-    uniqueIndex,
-    uuid,
-    varchar,
-} = require("drizzle-orm/pg-core");
+  pgTable,
+  text,
+  timestamp,
+  uuid,
+  varchar,
+  time,
+} = require('drizzle-orm/pg-core');
 
-const user = pgTable("user", {
-    id: uuid("id").primaryKey().defaultRandom(),
-    name: varchar("name", { length: 256 }).notNull(),
-    email: varchar("email", { length: 256 }).notNull().unique(),
-    password: varchar("password", { length: 256 }).notNull(),
-    createdAt: timestamp("created_at").defaultNow().notNull(),
-    updatedAt: timestamp("updated_at").defaultNow().notNull(),
+const user = pgTable('user', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  name: varchar('name', { length: 256 }).notNull(),
+  email: varchar('email', { length: 256 }).notNull().unique(),
+  password: varchar('password', { length: 256 }).notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });
 
-const product = pgTable("product", {
-    id: uuid("id").primaryKey().defaultRandom(),
-    name: varchar("name", { length: 256 }).notNull(),
-    description: text("description").notNull(),
-    price: varchar("price", { length: 256 }).notNull(),
-    createdAt: timestamp("created_at").defaultNow().notNull(),
-    updatedAt: timestamp("updated_at").defaultNow().notNull(),
+const workout = pgTable('workout', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  name: varchar('name', { length: 256 }).notNull(),
+  date: timestamp('date').notNull(),
+  time: time('time').notNull(),
+  userId: uuid('user_id')
+    .references(() => user.id)
+    .notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+const blog = pgTable('blog', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  title: varchar('name', { length: 256 }).notNull(),
+  slug: varchar('slug', { length: 256 }).notNull(),
+  content: text('content').notNull(),
+  featuredImage: text('featuredImage'),
+  userId: uuid('userId').references(() => user.id),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+const meal = pgTable('meal', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  name: varchar('name', { length: 256 }).notNull(),
+  description: text('content').notNull(),
+  image: text('image'),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+  userId: uuid('userId').references(() => user.id),
+});
+const mealDetail = pgTable('meal_detail', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  name: varchar('name', { length: 256 }).notNull(),
+  description: text('content').notNull(),
+  mealId: uuid('mealId').references(() => meal.id),
+  ingredientId: uuid('ingredientId').references(() => ingredient.id),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+const ingredient = pgTable('ingredient', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  name: varchar('name', { length: 256 }).notNull(),
+  description: text('content').notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+const weatherData = pgTable('weather_data', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  name: varchar('name', { length: 256 }).notNull(),
+  description: text('content').notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+const injuryPreventionTips = pgTable('injury_prevention_tips', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  title: varchar('name', { length: 256 }).notNull(),
+  description: text('content').notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });
 
-module.exports = { user, product };
+module.exports = { user, workout, blog, meal, mealDetail, ingredient, weatherData, injuryPreventionTips };
