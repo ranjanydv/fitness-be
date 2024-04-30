@@ -60,8 +60,8 @@ async function main() {
 
 async function seedAdmin() {
   const adminExists = await db.select().from(user).where(eq(user.email, 'admin@puremotion.com'));
-  if (adminExists.length > 0) {
-    await db.delete(user).where(eq(user.email, 'admin@puremotion.com'));
+  if (adminExists.length === 0) {
+    // await db.delete(user).where(eq(user.email, 'admin@puremotion.com'));
     const hashedPassword = await hashPassword('admin');
     await db.insert(user).values({
       email: 'admin@puremotion.com',
@@ -69,6 +69,7 @@ async function seedAdmin() {
       name: 'Pure Motion Admin',
       role:'admin'
     });
+    console.log('🚀 ~ Admin User Created');
   }
 }
 
