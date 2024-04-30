@@ -45,7 +45,7 @@ const login = catchAsync(async (req, res) => {
   const matched = await comparePassword(password, userExists[0].password);
   if (!matched) throw createError(401, 'Incorrect Credentials');
 
-  const token = generateToken(userExists[0].id);
+  const token = generateToken(userExists[0].id,userExists[0].role);
   return { token: 'Bearer ' + token };
 });
 

@@ -13,8 +13,8 @@ app.use("/auth", require("./auth.routes"));
 // user routes
 // app.use("/users", require("./user.routes"));
 
-// product routes
-// app.use("/products", require("./product.routes"));
+// blog routes
+app.use("/blogs", require("./blog.routes"));
 
 // order routes
 // app.use("/orders", require("./order.routes"));

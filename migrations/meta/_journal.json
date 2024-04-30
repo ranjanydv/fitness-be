@@ -8,6 +8,48 @@
       "when": 1714461020025,
       "tag": "0000_majestic_argent",
       "breakpoints": false
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1714466637642,
+      "tag": "0001_dry_mentor",
+      "breakpoints": false
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1714467442679,
+      "tag": "0002_dark_luminals",
+      "breakpoints": false
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1714467707398,
+      "tag": "0003_cold_jackal",
+      "breakpoints": false
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1714469371936,
+      "tag": "0004_heavy_gunslinger",
+      "breakpoints": false
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1714469459344,
+      "tag": "0005_outgoing_tempest",
+      "breakpoints": false
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1714469534838,
+      "tag": "0006_jittery_king_cobra",
+      "breakpoints": false
     }
   ]
 }

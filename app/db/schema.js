@@ -12,6 +12,7 @@ const user = pgTable('user', {
   name: varchar('name', { length: 256 }).notNull(),
   email: varchar('email', { length: 256 }).notNull().unique(),
   password: varchar('password', { length: 256 }).notNull(),
+  role: varchar('role', { length: 256 }).default('user'),
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });
@@ -30,10 +31,10 @@ const workout = pgTable('workout', {
 const blog = pgTable('blog', {
   id: uuid('id').primaryKey().defaultRandom(),
   title: varchar('name', { length: 256 }).notNull(),
-  slug: varchar('slug', { length: 256 }).notNull(),
+  slug: varchar('slug', { length: 256 }).notNull().unique(),
   content: text('content').notNull(),
   featuredImage: text('featuredImage'),
-  userId: uuid('userId').references(() => user.id),
+  // userId: uuid('userId').references(() => user.id).notNull(),
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });
@@ -44,14 +45,14 @@ const meal = pgTable('meal', {
   image: text('image'),
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
-  userId: uuid('userId').references(() => user.id),
+  userId: uuid('userId').references(() => user.id).notNull(),
 });
 const mealDetail = pgTable('meal_detail', {
   id: uuid('id').primaryKey().defaultRandom(),
   name: varchar('name', { length: 256 }).notNull(),
   description: text('content').notNull(),
-  mealId: uuid('mealId').references(() => meal.id),
-  ingredientId: uuid('ingredientId').references(() => ingredient.id),
+  mealId: uuid('mealId').references(() => meal.id).notNull(),
+  ingredientId: uuid('ingredientId').references(() => ingredient.id).notNull(),
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });

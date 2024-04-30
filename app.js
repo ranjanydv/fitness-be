@@ -67,6 +67,7 @@ async function seedAdmin() {
       email: 'admin@puremotion.com',
       password: hashedPassword,
       name: 'Pure Motion Admin',
+      role:'admin'
     });
   }
 }
