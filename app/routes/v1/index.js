@@ -19,8 +19,14 @@ app.use("/blogs", require("./blog.routes"));
 // Tips routes
 app.use("/tips", require("./injuryPrevention.routes"));
 
+// Ingredient routes
+app.use("/ingredients", require("./ingredient.routes"));
+
 // Meal routes
 app.use("/meals", require("./meal.routes"));
+
+// Meal Detail routes
+app.use("/mealDetails", require("./mealDetail.routes"));
 
 // order routes
 // app.use("/orders", require("./order.routes"));

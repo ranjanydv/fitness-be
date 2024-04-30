@@ -41,7 +41,7 @@ const getMeals = catchAsync(async (req, res) => {
 const getMealById = catchAsync(async (req, res) => {
   const { id } = req.params;
   const mealData = await db.select().from(meal).where(eq(meal.id, id));
-  if (mealData.length === 0) return createError(404, `Tip with id ${id} not found`);
+  if (mealData.length === 0) return createError(404, `Meal with id ${id} not found`);
   return { meal: mealData };
 });
 
