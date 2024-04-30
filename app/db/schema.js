@@ -20,7 +20,7 @@ const user = pgTable('user', {
 const workout = pgTable('workout', {
   id: uuid('id').primaryKey().defaultRandom(),
   name: varchar('name', { length: 256 }).notNull(),
-  date: timestamp('date').notNull(),
+  date: timestamp('date', { mode: 'string' }).notNull(),
   time: time('time').notNull(),
   userId: uuid('user_id')
     .references(() => user.id)

@@ -28,6 +28,9 @@ app.use("/meals", require("./meal.routes"));
 // Meal Detail routes
 app.use("/mealDetails", require("./mealDetail.routes"));
 
+// Workouts routes
+app.use("/workouts", require("./workout.routes"));
+
 // order routes
 // app.use("/orders", require("./order.routes"));
 
