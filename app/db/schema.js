@@ -66,7 +66,10 @@ const ingredient = pgTable('ingredient', {
 const weatherData = pgTable('weather_data', {
   id: uuid('id').primaryKey().defaultRandom(),
   name: varchar('name', { length: 256 }).notNull(),
-  description: text('content').notNull(),
+  description: text('description').notNull(),
+  date: timestamp('date', { mode: 'string' }).notNull(),
+  location: text('location').notNull(),
+  temperature: varchar('temperature', { length: 256 }).notNull(),
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });

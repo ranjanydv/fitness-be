@@ -31,11 +31,8 @@ app.use("/mealDetails", require("./mealDetail.routes"));
 // Workouts routes
 app.use("/workouts", require("./workout.routes"));
 
-// order routes
-// app.use("/orders", require("./order.routes"));
-
-// cart routes
-// app.use("/cart", require("./cart.routes"));
+// Workouts routes
+app.use("/weather", require("./weather.routes"));
 
 
 module.exports = app;

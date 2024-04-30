@@ -11,7 +11,7 @@ module.exports = catchAsync =
                 res.status(error ? error.status || 500 : 200).json({
                     status: error ? error.status || 500 : 200,
                     data: error ? error.message : result,
-                    ...(req?.user && !error ? { basePath: process.env.AWS_S3_BASE_PATH } : {}),
+                    // ...(req?.user && !error ? { basePath: process.env.AWS_S3_BASE_PATH } : {}),
                     message: error
                         ? error.message || "Something broke"
                         : "API request successfull",

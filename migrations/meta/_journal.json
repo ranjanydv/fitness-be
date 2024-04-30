@@ -50,6 +50,20 @@
       "when": 1714469534838,
       "tag": "0006_jittery_king_cobra",
       "breakpoints": false
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1714491614426,
+      "tag": "0007_absurd_post",
+      "breakpoints": false
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1714493062619,
+      "tag": "0008_sparkling_puck",
+      "breakpoints": false
     }
   ]
 }
