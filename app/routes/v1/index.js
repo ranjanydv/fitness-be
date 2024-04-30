@@ -16,6 +16,9 @@ app.use("/auth", require("./auth.routes"));
 // blog routes
 app.use("/blogs", require("./blog.routes"));
 
+// Tips routes
+app.use("/tips", require("./injuryPrevention.routes"));
+
 // order routes
 // app.use("/orders", require("./order.routes"));
 
